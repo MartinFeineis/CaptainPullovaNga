@@ -29,7 +29,7 @@ def get_ids ():
 		SQL = """CREATE TABLE IF NOT EXISTS {} ( rank INT, price_usd DECIMAL, price_btc DECIMAL, day_volume_usd DECIMAL, 
 				market_cap_usd DECIMAL, total_supply DECIMAL, percent_change_1h DECIMAL, percent_change_24h DECIMAL, percent_change_7d DECIMAL, 
 				last_updated TIMESTAMP WITH TIME ZONE)""".format(("n"+cid))
-		cer.execute(SQL)
+		cur.execute(SQL)
 		conn.commit()
 
 
