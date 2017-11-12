@@ -1,16 +1,18 @@
 import requests, psycopg2, json, datetime, shutil, os
+homedir = os.path.expanduser("~")
+print(homedir)
 
 PASSWD = None
 USER = None
 DB = None
 HOST = None
-CONN = psycopg2.connect(host=HOST,dbname=DB, user=USER ,password=PASSWD)
-cer=CONN.cursor()
+#CONN = psycopg2.connect(host=HOST,dbname=DB, user=USER ,password=PASSWD)
+#cer=CONN.cursor()
 # r = requests.get("https://api.coinmarketcap.com/v1/ticker/")
 # ret = json.loads(r.text)
 
 if not os.path.isfile('config.json'):
-	shutil.copy('~/nasghoul/Dokumente/config.json','.')
+	shutil.copy(homedir + '/nasghoul/Dokumente/config.json','.')
 
 with open('config.json','r') as data_file:
 	data = json.load(data_file)
