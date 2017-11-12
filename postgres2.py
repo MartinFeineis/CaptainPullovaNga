@@ -6,10 +6,8 @@ PASSWD = None
 USER = None
 DB = None
 HOST = None
-#CONN = psycopg2.connect(host=HOST,dbname=DB, user=USER ,password=PASSWD)
-#cer=CONN.cursor()
-# r = requests.get("https://api.coinmarketcap.com/v1/ticker/")
-# ret = json.loads(r.text)
+r = requests.get("https://api.coinmarketcap.com/v1/ticker/")
+ret = json.loads(r.text)
 
 if not os.path.isfile('config.json'):
 	shutil.copy(homedir + '/nasghoul/Dokumente/config.json','.')
@@ -23,10 +21,11 @@ with open('config.json','r') as data_file:
 	COINS = data['coins']
 
 def get_ids ():
-	conn = psycopg2.connect(host=HOST,dbname=DB, user=USER ,password=PASSWD)
 	"""create tables"""
+	conn = psycopg2.connect(host=HOST,dbname=DATABASE, user=USER ,password=PASSWD)
+	cur = conn.cursor()
 	for i in COINS:
-		cid = str(i["id"].replace("-","_"))
+		cid = str(i.replace("-","_"))
 		SQL = """CREATE TABLE IF NOT EXISTS {} ( rank INT, price_usd DECIMAL, price_btc DECIMAL, day_volume_usd DECIMAL, 
 				market_cap_usd DECIMAL, total_supply DECIMAL, percent_change_1h DECIMAL, percent_change_24h DECIMAL, percent_change_7d DECIMAL, 
 				last_updated TIMESTAMP WITH TIME ZONE)""".format(("n"+cid))
@@ -49,5 +48,5 @@ def ins_values():
 		cer.execute(SQL, data)
 		CONN.commit()
 
-#get_ids()
-#ins_values()
+get_ids()
+ins_values()
