@@ -1,0 +1,6 @@
+requests
+psycopg2
+json
+datetime
+shutil
+os

@@ -1,0 +1,51 @@
+import requests, psycopg2, json, datetime, shutil, os
+
+PASSWD = None
+USER = None
+DB = None
+HOST = None
+CONN = psycopg2.connect(host=HOST,dbname=DB, user=USER ,password=PASSWD)
+cer=CONN.cursor()
+# r = requests.get("https://api.coinmarketcap.com/v1/ticker/")
+# ret = json.loads(r.text)
+
+if not os.path.isfile('config.json'):
+	shutil.copy('~/nasghoul/Dokumente/config.json','.')
+
+with open('config.json','r') as data_file:
+	data = json.load(data_file)
+	PASSWD = data['password']
+	USER = data['user']
+	DATABASE = data['database']
+	HOST = data['host']
+	COINS = data['coins']
+
+def get_ids ():
+	conn = psycopg2.connect(host=HOST,dbname=DB, user=USER ,password=PASSWD)
+	"""create tables"""
+	for i in COINS:
+		cid = str(i["id"].replace("-","_"))
+		SQL = """CREATE TABLE IF NOT EXISTS {} ( rank INT, price_usd DECIMAL, price_btc DECIMAL, day_volume_usd DECIMAL, 
+				market_cap_usd DECIMAL, total_supply DECIMAL, percent_change_1h DECIMAL, percent_change_24h DECIMAL, percent_change_7d DECIMAL, 
+				last_updated TIMESTAMP WITH TIME ZONE)""".format(("n"+cid))
+		cer.execute(SQL)
+		conn.commit()
+
+
+def ins_values():
+	""""populate database with actual values"""
+	for i in ret:
+		cid = str(i["id"].replace("-","_"))
+		ts = datetime.datetime.fromtimestamp(int(i['last_updated']))
+		print(cid)
+		SQL = """INSERT INTO {} ( rank, price_usd, price_btc, day_volume_usd, market_cap_usd, total_supply,
+			percent_change_1h, percent_change_24h, percent_change_7d, last_updated)
+			VALUES ( %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""".format(("n"+cid))
+		data = (i["rank"], i["price_usd"], i["price_btc"], i["24h_volume_usd"], i["market_cap_usd"], i["total_supply"], i["percent_change_1h"], i["percent_change_24h"],
+			i["percent_change_7d"], ts)
+		print(data)
+		cer.execute(SQL, data)
+		CONN.commit()
+
+#get_ids()
+#ins_values()

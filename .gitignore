@@ -1,2 +1,3 @@
-creds.json
+*config.json
+*creds.json
 *.DS_Store
