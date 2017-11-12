@@ -35,6 +35,8 @@ def get_ids ():
 
 def ins_values():
 	""""populate database with actual values"""
+	conn = psycopg2.connect(host=HOST,dbname=DATABASE, user=USER ,password=PASSWD)
+	cur = conn.cursor()
 	for i in ret:
 		cid = str(i["id"].replace("-","_"))
 		ts = datetime.datetime.fromtimestamp(int(i['last_updated']))
@@ -45,8 +47,8 @@ def ins_values():
 		data = (i["rank"], i["price_usd"], i["price_btc"], i["24h_volume_usd"], i["market_cap_usd"], i["total_supply"], i["percent_change_1h"], i["percent_change_24h"],
 			i["percent_change_7d"], ts)
 		print(data)
-		cer.execute(SQL, data)
-		CONN.commit()
+		cur.execute(SQL, data)
+		conn.commit()
 
 get_ids()
 ins_values()
