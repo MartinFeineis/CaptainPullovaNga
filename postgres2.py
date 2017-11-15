@@ -6,8 +6,8 @@ PASSWD = None
 USER = None
 DB = None
 HOST = None
-r = requests.get("https://api.coinmarketcap.com/v1/ticker/")
-ret = json.loads(r.text)
+API_REQ = requests.get("https://api.coinmarketcap.com/v1/ticker/")
+AVIAL_CURS = json.loads(r.text)
 
 if not os.path.isfile('config.json'):
 	shutil.copy(homedir + '/nasghoul/Dokumente/config.json','.')
@@ -19,6 +19,12 @@ with open('config.json','r') as data_file:
 	DATABASE = data['database']
 	HOST = data['host']
 	COINS = data['coins']
+
+def comp_coins ():
+	"""compare the currencies returned by the api with the ones in the config File"""
+	for i in AVIAL_CURS["id"]:
+		if i not in COINS:
+			COINS.append()
 
 def get_ids ():
 	"""create tables"""
@@ -37,7 +43,7 @@ def ins_values():
 	""""populate database with actual values"""
 	conn = psycopg2.connect(host=HOST,dbname=DATABASE, user=USER ,password=PASSWD)
 	cur = conn.cursor()
-	for i in ret:
+	for i in AVIAL_CURS:
 		cid = str(i["id"].replace("-","_"))
 		ts = datetime.datetime.fromtimestamp(int(i['last_updated']))
 		print(cid)
