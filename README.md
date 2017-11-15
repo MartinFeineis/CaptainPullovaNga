@@ -1,6 +1,11 @@
 # CaptainPullovaNga
 trying to predict cryptocurrency prices
 
+get number of tweets per day
+get average price per day
+compare tweets from today with yesterday
+compare prive from today with yesterday
+
 
 # Postgres Install
 ```
