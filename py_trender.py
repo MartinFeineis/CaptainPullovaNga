@@ -1,10 +1,16 @@
 from pytrends.request import TrendReq
 
-kw_list = ["ripple"]
+kw_list = ['ripple', 'bitcoin', 'etherum']
 pytrends = TrendReq(hl='en-US', tz=360)
-trend = pytrends.build_payload(kw_list, cat=0, timeframe='today 5-y', geo='', gprop='')
-print(trend)
-pytrends.interest_over_time()
+trend = pytrends.build_payload(kw_list=kw_list)
+print(pytrends.interest_over_time())
+# Interest by Region
+interest_by_region_df = pytrends.interest_by_region()
+print(interest_by_region_df.head())
+
+# # Related Queries, returns a dictionary of dataframes
+# related_queries_dict = pytrend.related_queries()
+# print(related_queries_dict)
 
 # # Login to Google. Only need to run this once, the rest of requests will use the same session.
 # pytrend = TrendReq()
