@@ -7,7 +7,7 @@ USER = None
 DB = None
 HOST = None
 API_REQ = requests.get("https://api.coinmarketcap.com/v1/ticker/")
-AVIAL_CURS = json.loads(r.text)
+AVIAL_CURS = json.loads(API_REQ.text)
 
 if not os.path.isfile('config.json'):
 	shutil.copy(homedir + '/nasghoul/Dokumente/config.json','.')
