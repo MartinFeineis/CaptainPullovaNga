@@ -1,6 +1,6 @@
+setuptools
 requests
 psycopg2
-json
-datetime
-shutil
-os
+pytrends
+uwsgi
+django
