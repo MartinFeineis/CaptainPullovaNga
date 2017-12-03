@@ -15,3 +15,9 @@ CREATE ROLE ******** WITH LOGIN PASSWORD '*************' CREATEDB
 CREATE SCHEMA IF NOT EXISTS ********** AUTHORIZATION *******;
 psql -h localhost -p 5432 -U <<user>> <<database>>
 ```
+
+# Using Docker
+```
+sudo docker build .
+sudo docker run -d -i -p 8090:80 -t 31f3fb124ebe nginx -g 'daemon off;'
+```
