@@ -2,7 +2,7 @@ from pytrends.request import TrendReq
 
 kw_list = ['ripple', 'bitcoin', 'etherum']
 pytrends = TrendReq(hl='en-US', tz=360)
-trend = pytrends.build_payload(kw_list=kw_list)
+trend = pytrends.build_payload(kw_list=kw_list, timeframe='now 7-d')
 print(pytrends.interest_over_time())
 # Interest by Region
 interest_by_region_df = pytrends.interest_by_region()
