@@ -21,3 +21,9 @@ psql -h localhost -p 5432 -U <<user>> <<database>>
 sudo docker build .
 sudo docker run -d -i -p 8090:80 -t 31f3fb124ebe nginx -g 'daemon off;'
 ```
+
+# Working with Django
+creating new Project
+```django-admin startproject <project-name>```
+and creating new App
+```django-admin startapp <app-name>```
