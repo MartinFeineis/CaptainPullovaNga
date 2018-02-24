@@ -22,7 +22,7 @@ sudo docker build .
 sudo docker run -d -i -p 8090:80 -t 31f3fb124ebe nginx -g 'daemon off;'
 sudo docker run -i -t 4a514154296a /bin/bash
 ```
-s
+This will expose nginx on the docker IP something like 172.17.0.2 or similar not on localhost
 # In the container run
 ```uwsgi --http :8000 --wsgi-file wsgi.py```
 to test the uwsgi application
