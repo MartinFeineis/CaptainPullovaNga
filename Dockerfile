@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 WORKDIR /usr/src/app
 RUN apt-get update ; apt-get install --fix-missing
-RUN apt-get install -y build-essential python-dev nginx python3 python3-pip zip
+RUN apt-get install -y build-essential python-dev nginx python3 python3-pip zip curl vim
 RUN systemctl enable nginx
 COPY requirements.txt ./
 COPY nginx.conf /etc/nginx/nginx.conf
@@ -11,4 +11,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app.zip ./
 RUN unzip app.zip
 EXPOSE 80
-CMD ["nginx"]
+CMD service nginx restart && tail -f /var/log/syslog | grep nginx
