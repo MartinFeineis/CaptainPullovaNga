@@ -1,8 +1,12 @@
-FROM ubuntu:latest
+FROM debian:latest
 WORKDIR /usr/src/app
 RUN apt-get update ; apt-get install --fix-missing
-RUN apt-get install -y build-essential python-dev nginx python3 python3-pip zip curl vim
-RUN systemctl enable nginx
+RUN apt-get install -y build-essential python-dev nginx python3 python3-pip zip 
+
+# Install debug tools 
+RUN apt-get install -y curl vim
+RUN update-rc.d nginx enable
+RUN service nginx start
 COPY requirements.txt ./
 COPY nginx.conf /etc/nginx/nginx.conf
 RUN ln -s /usr/bin/pip3 /usr/bin/pip
