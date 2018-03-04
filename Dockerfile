@@ -1,5 +1,5 @@
 FROM debian:latest
-WORKDIR /usr/src/app
+WORKDIR /var/www/
 RUN apt-get update ; apt-get install --fix-missing
 RUN apt-get install -y build-essential python-dev nginx python3 python3-pip zip 
 

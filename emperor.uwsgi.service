@@ -1,0 +1,16 @@
+[Unit] 
+Description=uWSGI Emperor 
+After=syslog.target 
+ 
+[Service] 
+ExecStart=/home/admin/.local/bin/uwsgi --socket :8000 --chdir /var/ww/CPN/ --wsgi-file /var/www/CPN/CPN/wsgi.py 
+# Requires systemd version 211 or newer 
+RuntimeDirectory=uwsgi 
+Restart=always 
+KillSignal=SIGQUIT 
+Type=notify 
+StandardError=syslog 
+NotifyAccess=all 
+ 
+[Install] 
+WantedBy=multi-user.target
