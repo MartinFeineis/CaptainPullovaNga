@@ -2,3 +2,5 @@
 *creds.json
 *.DS_Store
 *nginx.conf
+*app.zip
+*image.id
