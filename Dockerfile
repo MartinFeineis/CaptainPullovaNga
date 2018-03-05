@@ -7,7 +7,8 @@ RUN unzip app.zip
 
 # Install debug tools 
 RUN apt-get install -y curl vim
-#RUN ln -s /usr/bin/pip3 /usr/bin/pip
+RUN useradd -ms /bin/bash newuser
+
 RUN chmod +x orch.sh
 RUN ./orch.sh
 EXPOSE 8080
