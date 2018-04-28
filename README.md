@@ -56,3 +56,6 @@ creating new Project
 ```django-admin startproject <project-name>```
 and creating new App
 ```django-admin startapp <app-name>```
+
+
+Time with debian:latest 1:32 min:sec

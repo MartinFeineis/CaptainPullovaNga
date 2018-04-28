@@ -1,6 +1,6 @@
 setuptools
 requests
-psycopg2
+psycopg2-binary
 pytrends
 uwsgi
 django

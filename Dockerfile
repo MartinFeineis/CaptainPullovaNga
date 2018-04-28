@@ -1,14 +1,13 @@
-FROM debian:latest
+FROM alpine:latest
 WORKDIR /var/www/
-RUN apt-get update ; apt-get install --fix-missing
-RUN apt-get install -y zip apt-utils
+RUN apk update
+RUN apk add --no-cache python
 COPY app.zip ./
 RUN unzip app.zip
 
 # Install debug tools 
-RUN apt-get install -y curl vim
-RUN useradd -ms /bin/bash newuser
+RUN apk add curl vim
 
-RUN chmod +x orch.sh
-RUN ./orch.sh
-EXPOSE 8080
+RUN chmod +x entrypoint.sh
+RUN ./entrypoint.sh
+EXPOSE 80
