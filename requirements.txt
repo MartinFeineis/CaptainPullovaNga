@@ -1,3 +1,4 @@
+cython
 setuptools
 requests
 psycopg2-binary

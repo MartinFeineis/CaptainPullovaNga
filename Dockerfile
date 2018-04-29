@@ -1,7 +1,6 @@
 FROM alpine:latest
 WORKDIR /var/www/
 RUN apk update
-RUN apk add --no-cache python
 COPY app.zip ./
 RUN unzip app.zip
 
