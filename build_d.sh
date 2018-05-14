@@ -1,5 +1,5 @@
 #!/bin/bash
-
+cp /home/wolle/nasghoul/data/django_secrets/* .
 rm app.zip
 zip -r app.zip CPN/* nginx.conf uwsgi.ini requirements.txt entrypoint.sh supervisord.conf
 sudo docker build --iidfile=image.id .
