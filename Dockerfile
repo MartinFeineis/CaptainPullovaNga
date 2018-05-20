@@ -10,3 +10,4 @@ RUN apk add curl vim
 RUN chmod +x entrypoint.sh
 RUN ./entrypoint.sh
 EXPOSE 80
+CMD ["supervisord"]
