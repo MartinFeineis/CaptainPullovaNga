@@ -25,7 +25,7 @@ SECRET_KEY = 'z17niirdqi+8ofy6e=3c_wmv#_dst43lxxm$6=rpnogndqe1_b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.ghoulmanor.org']
 
 
 # Application definition
