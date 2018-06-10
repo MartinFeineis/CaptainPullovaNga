@@ -60,34 +60,3 @@ and creating new App
 
 ```sudo docker run -it alpine:latest /bin/sh```
 Time with debian:latest 1:32 min:sec with alpine 34sec
-
-
-
- 1101  ssh 192.168.10.102
- 1102  profanity 
- 1103  pull_upgr 
- 1104  profanity 
- 1105  pull_upgr 
- 1106  histroy
- 1107  history 
- 1108  sudo du
- 1109  sudo su
- 1110  profanity 
- 1111  cd projects/CaptainPullovaNga/
- 1112  git status 
- 1113  git add entrypoint.sh 
- 1114  git status 
- 1115  git commit -am "switching to Alpine Linux"
- 1116  git status 
- 1117  git push 
- 1118  htop
- 1119  ./build_d.sh 
- 1120  hi alpine
- 1121  sudo docker run -it alpine /bin/bash
- 1122  sudo docker run -it alpine \bin\bash
- 1123  sudo docker run -it alpine:latest /bin/bash
- 1124  sudo docker run -it alpine:latest /bin/sh
- 1125  ./build_d.sh 
- 1126  time ./build_d.sh 
- 1127  sudo docker run -it alpine:latest /bin/sh
- 1128  history
