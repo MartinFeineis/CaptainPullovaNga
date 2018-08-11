@@ -49,7 +49,6 @@ sudo apt-get install -y mongodb-org
 sudo systemctl enable mongod.service 
 sudo systemctl start mongod.service 
 sudo systemctl status mongod.service 
-```
 
 # Working with Django
 creating new Project
@@ -60,3 +59,7 @@ and creating new App
 
 ```sudo docker run -it alpine:latest /bin/sh```
 Time with debian:latest 1:32 min:sec with alpine 34sec
+
+Put static Files in ~/projects/wedding/static
+
+Run collectstatic, push and commit
